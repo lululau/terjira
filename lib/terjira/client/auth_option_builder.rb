@@ -31,6 +31,7 @@ module Terjira
           key(:password).mask('Password:', required: true)
         end
         result[:auth_type] = :basic
+        result[:use_ssl] = result[:site].start_with?('https') ? true : false
         result
       end
 

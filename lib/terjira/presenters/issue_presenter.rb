@@ -53,7 +53,9 @@ module Terjira
                      colorize_issue_type(issue.issuetype),
                      issue.assignee.try(:name)].join(' ')
 
-      lines = [first_line, second_line].map do |line|
+      third_line = issue.client.options[:site] + '/browse/' + issue.key
+
+      lines = [first_line, second_line, third_line].map do |line|
         insert_new_line(line, screen_width - 30)
       end
       lines.join("\n")
